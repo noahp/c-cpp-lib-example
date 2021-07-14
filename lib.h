@@ -1,0 +1,1 @@
+int lib(int arg);
