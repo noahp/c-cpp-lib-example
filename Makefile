@@ -1,10 +1,12 @@
+OBJS = lib.c.o lib.cpp.o
+
 main: main.c liblib.a
 	gcc $^ -lstdc++ -o main
 
-lib.o: lib.c
+%.c.o: %.c
 	gcc -c $^ -o $@
-lib.opp: lib.cpp
-	g++ -std=c++20 -c lib.cpp -o lib.opp
+%.cpp.o: %.cpp
+	g++ -std=c++20 -c $^ -o $@
 
-liblib.a: lib.o lib.opp
+liblib.a: $(OBJS)
 	ar rcs $@ $^
